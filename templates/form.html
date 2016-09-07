@@ -1,0 +1,25 @@
+<DOCTYPE! html>
+<html>
+    <head>
+        <title>{{ maintitle }}</title>
+    </head>
+    <body>
+        <form action={{ action }} method="post">
+            <p>Title:<input type="text" name="title" value={{ title }}></p>
+            <p>Story:<textarea name="story" rows=15 cols=60>{{ story }}</textarea></p>
+            <p>Criteria:<textarea name="criteria" rows=15 cols=60>{{ criteria }}</textarea></p>
+            <p>Value:<input name="businessvalue" type="number" min="100" max="1500" step="100" value={{ businessvalue }}></p>
+            <p>Estimation:<input name="estimation" type="number" min="0.5" max="40" step="0.5" value={{ estimation }}></p>
+            <p>Status:
+                <select name="status">
+                    <option>Planning</option>
+                    <option>To do</option>
+                    <option>In progress</option>
+                    <option>Review</option>
+                    <option>Done</option>
+                </select>
+            </p>
+            <p><input type="submit" value={{ button }}></p>
+        </form>
+    </body>
+</html>

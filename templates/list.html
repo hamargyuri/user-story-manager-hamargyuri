@@ -1,0 +1,41 @@
+<DOCTYPE! html>
+<html>
+    <head>
+        <title>Sprint reporter</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Title</td>
+                <td>Story</td>
+                <td>Criteria</td>
+                <td>Value</td>
+                <td>Estimation</td>
+                <td>Status</td>
+            </tr>
+            {% for datas in print_list %}
+            <tr>
+                {% for data in datas %}
+                <td>{{ data }}</td>
+                {% endfor %}
+                <td>
+                    <p>
+                        <a href="{{ url_for('upgrade_story_template', story_id=datas[0]) }}">Edit</a>
+                        <br>
+                        <a href="{{ url_for('delete_story', story_id=datas[0]) }}">Delete</a>
+                    </p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p>
+            <form method="get" action="/story/">
+                <button type="submit">New story</button>
+            </form>
+        </p>
+        <p>
+
+        </p>
+    </body>
+</html>
