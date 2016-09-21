@@ -22,9 +22,9 @@
                     <label for="title">Title:</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{ title }}">
                     <label for="story">Story:</label>
-                    <textarea class="form-control" name="story" id="story" value="{{ story }}"></textarea>
+                    <textarea class="form-control" name="story" id="story">{{ story }}</textarea>
                     <label for="criteria">Criteria:</label>
-                    <textarea class="form-control" name="criteria" id="criteria" value="{{ criteria }}"></textarea>
+                    <textarea class="form-control" name="criteria" id="criteria">{{ criteria }}</textarea>
                     <label for="value">Value:</label>
                     <select type="text" class="form-control" name="businessvalue" id="value" value="{{ businessvalue }}">
                         {% for i in range(1, 16) %}
