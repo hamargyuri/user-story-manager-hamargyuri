@@ -1,41 +1,56 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Sprint reporter</title>
     </head>
     <body>
-        <table>
-            <tr>
-                <td>ID</td>
-                <td>Title</td>
-                <td>Story</td>
-                <td>Criteria</td>
-                <td>Value</td>
-                <td>Estimation</td>
-                <td>Status</td>
-            </tr>
-            {% for datas in print_list %}
-            <tr>
-                {% for data in datas %}
-                <td>{{ data }}</td>
-                {% endfor %}
-                <td>
-                    <p>
-                        <a href="{{ url_for('upgrade_story_template', story_id=datas[0]) }}">Edit</a>
-                        <br>
-                        <a href="{{ url_for('delete_story', story_id=datas[0]) }}">Delete</a>
-                    </p>
-                </td>
-            </tr>
-            {% endfor %}
-        </table>
-        <p>
-            <form method="get" action="/story/">
-                <button type="submit">New story</button>
-            </form>
-        </p>
-        <p>
-
-        </p>
+        <nav class="navbar navbar-default">
+            <ul class="nav nav-tabs">
+              <li role="presentation"><a href="/">Home</a></li>
+              <li role="presentation"><a href="/story" method="get">New Story</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Story</th>
+                        <th>Criteria</th>
+                        <th>Value</th>
+                        <th>Estimation</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for datas in print_list %}
+                    <tr>
+                        {% for data in datas %}
+                        <td>{{ data }}</td>
+                        {% endfor %}
+                        <td>
+                            <div class="btn-group">
+                                <a class="btn btn-warning" href="{{ url_for('upgrade_story_template', story_id=datas[0]) }}">Edit</a>
+                                <a class="btn btn-danger" href="{{ url_for('delete_story', story_id=datas[0]) }}">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p>
+                <form method="get" action="/story/">
+                    <button type="submit" class="btn btn-primary">New story</button>
+                </form>
+            </p>
+        </div>
     </body>
 </html>
