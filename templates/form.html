@@ -1,25 +1,53 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>{{ maintitle }}</title>
     </head>
     <body>
-        <form action={{ action }} method="post">
-            <p>Title:<input type="text" name="title" value={{ title }}></p>
-            <p>Story:<textarea name="story" rows=15 cols=60>{{ story }}</textarea></p>
-            <p>Criteria:<textarea name="criteria" rows=15 cols=60>{{ criteria }}</textarea></p>
-            <p>Value:<input name="businessvalue" type="number" min="100" max="1500" step="100" value={{ businessvalue }}></p>
-            <p>Estimation:<input name="estimation" type="number" min="0.5" max="40" step="0.5" value={{ estimation }}></p>
-            <p>Status:
-                <select name="status">
-                    <option>Planning</option>
-                    <option>To do</option>
-                    <option>In progress</option>
-                    <option>Review</option>
-                    <option>Done</option>
-                </select>
-            </p>
-            <p><input type="submit" value={{ button }}></p>
-        </form>
+        <nav class="navbar navbar-default">
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="/">Home</a></li>
+                <li role="presentation"><a href="/story" method="get">New Story</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <form  action="{{ action }}" method="post">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" class="form-control" name="title" id="title" value="{{ title }}">
+                    <label for="story">Story:</label>
+                    <textarea class="form-control" name="story" id="story" value="{{ story }}"></textarea>
+                    <label for="criteria">Criteria:</label>
+                    <textarea class="form-control" name="criteria" id="criteria" value="{{ criteria }}"></textarea>
+                    <label for="value">Value:</label>
+                    <select type="text" class="form-control" name="businessvalue" id="value" value="{{ businessvalue }}">
+                        {% for i in range(1, 16) %}
+                        <option>{{ i * 100 }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="estimation">Estimation:</label>
+                    <select type="text" class="form-control" name="estimation" id="estimation" value="{{ estimation }}">
+                        {% for i in range(1, 81) %}
+                        <option>{{ i * 0.5 }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="status">Status:</label>
+                    <select class="form-control" name="status" id="status" value="{{ status }}">
+                        <option>Planning</option>
+                        <option>To do</option>
+                        <option>In progress</option>
+                        <option>Review</option>
+                        <option>Done</option>
+                    </select>
+                </div>
+                <input type="submit" class="btn btn-primary" value="{{ button }}">
+            </form>
+        </div>
     </body>
 </html>
